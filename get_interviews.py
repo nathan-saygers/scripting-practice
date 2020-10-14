@@ -49,7 +49,7 @@ def main():
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
         summary = event['summary']
-        if event['creator']['email'] != 'nathan.saygers@gmail.com':
+        if event['creator']['email'] != '_YOUR_EMAIL_HERE_':
             print(readable_date(start), summary)
 
 
