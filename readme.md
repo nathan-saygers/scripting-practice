@@ -9,6 +9,7 @@ To get this working for you, there is several steps:
 ### Mandatory:
 
 - Follow steps 1 and 2 of the Python Quickstart guide for the Google API client: https://developers.google.com/calendar/quickstart/python
+- Add your `credentials.json` file to this directory
 - On line 52 of `get_interviews.py`, add your email address.
 
 ### Optional:
