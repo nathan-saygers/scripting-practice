@@ -2,6 +2,7 @@ from __future__ import print_function
 import datetime
 import pickle
 import os.path
+from create_date import readable_date
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -37,9 +38,9 @@ def main():
 
     # Call the Calendar API
     now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-    print('Getting the upcoming 10 events')
+    print('Your next interview(s) are:')
     events_result = service.events().list(calendarId='primary', timeMin=now,
-                                          maxResults=10, singleEvents=True,
+                                          maxResults=100, singleEvents=True,
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
 
@@ -49,7 +50,7 @@ def main():
         start = event['start'].get('dateTime', event['start'].get('date'))
         summary = event['summary']
         if event['creator']['email'] != 'nathan.saygers@gmail.com':
-            print(start, summary)
+            print(readable_date(start), summary)
 
 
 if __name__ == '__main__':
